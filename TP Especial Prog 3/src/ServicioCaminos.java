@@ -48,12 +48,13 @@ public class ServicioCaminos {
 					List<Integer> control = new ArrayList<>(this.dfs(n, visitados,++cont,llegamos));
 					if(llegamos){
 						aux.addAll(control);
+						return aux;
 					}
                     
                 }
             }
         }
-        return aux;
+        return null;
     }
 
 }

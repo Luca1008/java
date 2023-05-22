@@ -28,7 +28,11 @@ public class Arco<T> {
 		return etiqueta;
 	}
 
-    
+    @Override
+	public String toString() {
+			System.out.println(verticeOrigen + "  -- > " + verticeDestino);
+		return "";
+	}
 
 
     
