@@ -23,19 +23,33 @@ public class ServicioCaminos {
 		// Resolver Caminos
         HashSet<Integer> visitados = new HashSet<>();
 		List<List<Integer>> caminos = new ArrayList<List<Integer>>();
-		caminos.add(this.dfs(this.origen, visitados, 0));
+		Iterator<Integer> edge = this.grafo.obtenerAdyacentes(this.origen);
+		boolean llegamos = false;
+		if (edge != null){
+			while(edge.hasNext()){
+				caminos.add(this.dfs(this.origen, visitados, 0,llegamos));
+			}
+		}
+		
 		return  caminos;
 	}
 
-	private List<Integer> dfs ( Integer origen, HashSet<Integer> visitados, int cont){
+	private List<Integer> dfs ( Integer origen, HashSet<Integer> visitados, int cont, boolean llegamos){
         List<Integer> aux = new ArrayList<>(origen);
         visitados.add(origen);
         Iterator<Integer> edge = this.grafo.obtenerAdyacentes(origen);
         if( edge != null){
-            while ((edge.hasNext())&&(cont <= lim)&&(origen!=destino)){
+            while ((edge.hasNext())&&(cont < lim)&&(!llegamos)){
                 Integer n = edge.next();
+				if(origen == this.destino){
+					llegamos = true;
+				}
                 if(!visitados.contains(n)){
-                    aux.addAll(this.dfs(n, visitados,++cont));
+					List<Integer> control = new ArrayList<>(this.dfs(n, visitados,++cont,llegamos));
+					if(llegamos){
+						aux.addAll(control);
+					}
+                    
                 }
             }
         }
