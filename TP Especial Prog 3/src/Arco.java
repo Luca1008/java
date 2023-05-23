@@ -30,8 +30,8 @@ public class Arco<T> {
 
     @Override
 	public String toString() {
-			System.out.println(verticeOrigen + "  -- > " + verticeDestino);
-		return "";
+			String aux = (verticeOrigen + " -> " + verticeDestino);
+			return aux;
 	}
 
 
