@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -60,7 +59,8 @@ public class GrafoDirigido<T> implements Grafo<T> {
         //     }
         // }
         
-        // No se si al borrar el vertice tambien borra el otro hashMap de arcos
+        // al borrar vertice tendria q borrar todos los arcos q apuntan a el vertice borrado pero no nos sale
+        //se nos rompe y no sabemos por q 
     }
 
     @Override
@@ -91,10 +91,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
      */
     public void borrarArco(int verticeOrigen, int verticeDestino) {
         // Buscamos el arco y lo borramos
-        System.out.println(verticeOrigen);
-        System.out.println(verticeDestino);
         vertices.get(verticeOrigen).remove(verticeDestino);
-        System.out.println("Borrado pibe");
 
     }
 
@@ -189,12 +186,11 @@ public class GrafoDirigido<T> implements Grafo<T> {
     @Override
     // COMPLEJIDAD: O()
     public Iterator<Arco<T>> obtenerArcos() {
-        List<Arco<T>> arcos = new ArrayList<>(null);
+        List<Arco<T>> arcos = new ArrayList<>();
         for (Map.Entry<Integer, HashMap<Integer, Arco<T>>> entry : vertices.entrySet()) {
-             arcos.addAll(entry.getValue().values());
+            arcos.addAll(entry.getValue().values());
         }
-        Iterator<Arco<T>> iterator = arcos.iterator();
-        return iterator;
+        return arcos.iterator();
     }
 
     @Override

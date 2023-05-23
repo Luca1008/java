@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -26,8 +27,6 @@ public class App {
 
         mapa.agregarVertice(100);
         mapa.agregarArco(0, 100, null);
-        mapa.agregarArco(2, 100, null);
-        mapa.agregarArco(3, 100, null);
         mapa.agregarArco(100, 43, null);
 
 
@@ -53,7 +52,7 @@ public class App {
         mapa.borrarVertice(100);
         mapa.borrarArco(0, 100);
 
-        System.out.println("Borre");
+        /* System.out.println("Borre");
         mapa.toString();
 
         System.out.println(mapa.contieneVertice(23));
@@ -65,24 +64,56 @@ public class App {
         System.out.println(mapa.obtenerArco(43, 89));
         System.out.println(mapa.cantidadVertices());
 
-        System.out.println("separacion");
+        System.out.println("separacion 1 ");
 
         Iterator<Integer> iter = mapa.obtenerVertices();
         while (iter.hasNext()){
             System.out.println(iter.next());
         }
-        System.out.println("separacion");
+        System.out.println("separacion 2 ");
 
         Iterator<Integer> iter2 = mapa.obtenerAdyacentes(23);
         while (iter2.hasNext()){
             System.out.println(iter2.next());
         }
-        System.out.println("separacion");
+        System.out.println("separacion 3 ");
 
         Iterator<Arco<Integer>> iter3 = mapa.obtenerArcos();
         while (iter3.hasNext()){
             System.out.println(iter3.next());
+        } */
+        System.out.println("separacion 4");
+
+        Iterator<Arco<Integer>> arcoIterator = mapa.obtenerArcos(23);
+        while (arcoIterator.hasNext()){
+            System.out.println(arcoIterator.next());
         }
-        System.out.println("separacion");
+
+        System.out.println("separacion 5");
+
+        ServicioDFS gDfs = new ServicioDFS(mapa);
+        List<Integer> resultado = gDfs.dfsForest();
+        System.out.println(resultado.toString());
+
+
+        System.out.println("separacion 6");
+
+        ServicioBFS gBfs = new ServicioBFS(mapa);
+        List<Integer> resultados = gBfs.bfsForest();
+        System.out.println(resultados.toString());
+
+        System.out.println("separacion 7");
+
+        ServicioCaminos caminito = new ServicioCaminos(mapa, 0, 43, 4);
+
+        List<List<Integer>> resList = caminito.caminos();
+        for (List<Integer> listaInterna : resList) {
+            System.out.println(listaInterna.toString());
+        }
+        
+        
+
+
+
     }
 }
