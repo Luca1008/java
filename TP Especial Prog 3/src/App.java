@@ -28,6 +28,7 @@ public class App {
         mapa.agregarArco(3, 7, null);
         mapa.agregarArco(6, 7, null);
         mapa.agregarArco(7, 23, null);
+        mapa.agregarArco(7, 43, null);
         mapa.agregarArco(23, 1, null);
         mapa.agregarArco(23, 2, null);
         mapa.agregarArco(23, 43, null);
