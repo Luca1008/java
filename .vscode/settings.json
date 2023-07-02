@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "tp1/src",
+        "TP Especial Prog 3/src",
+        "TP Especial Prog 3 Segunda Entrega/src",
+        "prog3tpe2-main/tpe"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}

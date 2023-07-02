@@ -1,10 +1,15 @@
+package programacion3.tpe;
+
+import programacion3.tp3.GrafoDirigido;
+import programacion3.tp3.Arco;
+
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String path = "/TP Especial Prog 3 Segunda Entrega/src/datasets/dataset3.txt";
+        String path = "./tpe/datasets/dataset3.txt";
         CSVReader reader = new CSVReader(path);
         reader.read();
 
@@ -13,12 +18,12 @@ public class Main {
 
         // Crea el servicio para backtracking pasandole el grafo
         ServicioBacktracking servicioBacktracking = new ServicioBacktracking(grafo);
-        servicioBacktracking.encontrarMejorSolucion();
+        servicioBacktracking.findBestSolution();
         System.out.println(servicioBacktracking.formatResult());
 
         // Crea el servicio greedy utilizando el algoritmo de Dijstra pasandole el grafo
         ServicioGreedy servicioGreedy = new ServicioGreedy(grafo);
-        servicioGreedy.encontrarMejorSolucion();
+        servicioGreedy.findBestSolution();
         System.out.println(servicioGreedy.formatResult());
 
 
